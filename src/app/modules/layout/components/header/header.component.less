@@ -1,0 +1,24 @@
+@import 'colors';
+@import "screen-sizes";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 28px;
+  border-bottom: 3px solid @buttonFirst;
+
+  .header__logo {
+    width: 50px;
+  }
+
+  .header__link {
+    margin-right: 66px;
+  }
+
+  .header__links {
+    @media @mobile, @tablet {
+      display: none;
+    }
+  }
+}

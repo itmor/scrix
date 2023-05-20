@@ -1,0 +1,50 @@
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: normal;
+  text-align: left;
+  color: @text;
+  background-color: @background;
+}
+
+button {
+  font-family: MuseoSansCyrillic, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+
+textarea {
+  resize: vertical;
+}
+
+p {
+  margin: 16px 0 16px 0;
+}
+
+a {
+  color: @link;
+  text-decoration: none;
+
+  &:hover {
+    color: @linkHover;
+    text-decoration: underline;
+  }
+  &:active {
+    color: @linkActive;
+  }
+}
