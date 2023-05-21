@@ -1,0 +1,26 @@
+<ui-page class="list">
+  <ng-template #loader>
+    <ui-loader></ui-loader>
+  </ng-template>
+
+  <ng-container *ngIf="!isLoading; else loader">
+    <div *ngIf="!imageResources.length" class="list__info">не найдено генераций</div>
+
+    <div *ngIf="imageResources.length" class="list__cards">
+      <div *ngFor="let item of imageResources" class="list__card">
+        <img class="list__card-image" [src]="item.originalLink" alt="Изображение">
+        <div class="list__card-text">
+          <p>Дата:  {{ item.date | date }}</p>
+          <div class="list__card-progress"
+               [ngClass]="{'list__card-progress--completed': item.iterationAmount === item.iterationCount}"
+               [style.width]="getPercentProgress(item.iterationAmount, item.iterationCount)"></div>
+          <p>Количество итераций: {{ item.iterationCount }} из {{ item.iterationAmount }}</p>
+        </div>
+        <a class="list__card-open-generation-button" *ngIf="item.iterationCount"
+           [routerLink]="'/manager/resource/' + item.id">Посмотреть генерации</a>
+      </div>
+    </div>
+
+  </ng-container>
+</ui-page>
+

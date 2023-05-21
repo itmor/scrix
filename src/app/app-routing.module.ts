@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./modules/manager/manager.module').then((mod) => mod.ManagerModule),
+    redirectTo: '/manager/list',
   },
 ];
 

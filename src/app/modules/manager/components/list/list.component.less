@@ -1,0 +1,59 @@
+@import "screen-sizes";
+
+.list {
+  .list__info {
+    text-align: center;
+  }
+
+  .list__cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+
+    @media @tablet {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media @mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .list__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    .list__card-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .list__card-text {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .list__card-progress {
+      height: 2px;
+      background-color: #e9ba85;
+      margin-bottom: 8px;
+      width: 0;
+
+      &.list__card-progress--completed {
+        background-color: #85e98b;
+      }
+    }
+
+    .list__card-open-generation-button {
+      margin-bottom: 20px;
+      margin-top: 10px;
+      background-color: #1f55dc;
+      padding: 5px 13px;
+    }
+  }
+}

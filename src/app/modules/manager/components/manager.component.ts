@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-manager',
+  selector: 'main-manager',
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.less'],
 })
-export class ManagerComponent {
-  constructor() {}
-}
+export class ManagerComponent {}

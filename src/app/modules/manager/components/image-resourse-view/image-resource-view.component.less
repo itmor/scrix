@@ -1,0 +1,51 @@
+@import "screen-sizes";
+
+.image-resource-view {
+  .image-resource-view__info {
+    text-align: center;
+  }
+
+  .image-resource-view__cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+
+    @media @tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media @mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .image-resource-view__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    .image-resource-view__card-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .image-resource-view__card-text {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+
+    .image-resource-view__card-download-button {
+      cursor: pointer;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      background-color: #1f55dc;
+      padding: 5px 13px;
+    }
+
+  }
+}

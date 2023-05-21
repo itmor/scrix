@@ -1,0 +1,19 @@
+<ui-page class="generator">
+  <div class="generator__file-select">
+    <img *ngIf="safeImageUrl" class="generator__file-select-image" [src]="safeImageUrl" alt="">
+    <div class="generator__file-select-label">{{selectedFile?.name}}</div>
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept=".png,.jpg">
+  </div>
+
+  <div *ngIf="safeImageUrl" class="generator__panel">
+    <mat-form-field class="generator__panel-input">
+      <input matInput [formControl]="iterationControl" type="number" placeholder="итераций"/>
+    </mat-form-field>
+
+    <button class="generator__panel-button" type="button" mat-raised-button (click)="submit()">Отправить на генерацию
+    </button>
+
+    <ui-loader *ngIf="inProcess"></ui-loader>
+  </div>
+</ui-page>

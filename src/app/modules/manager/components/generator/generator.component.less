@@ -1,0 +1,42 @@
+@import "colors";
+@import "screen-sizes";
+
+.generator {
+  .generator__file-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+
+    .generator__file-select-label {
+      margin-bottom: 10px;
+      line-break: anywhere;
+    }
+
+    .generator__file-select-image {
+      width: 28%;
+      margin-bottom: 20px;
+
+      @media @tablet {
+        width: 50%;
+      }
+
+      @media @mobile {
+        width: 95%;
+      }
+    }
+  }
+
+  .generator__panel {
+    .generator__panel-button {
+      margin-left: 15px;
+    }
+
+    .generator__panel-input {
+      @media @mobile {
+        width: 100px;
+      }
+    }
+  }
+}

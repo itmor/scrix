@@ -1,0 +1,19 @@
+<ui-page class="image-resource-view">
+  <ng-template #loader>
+    <ui-loader></ui-loader>
+  </ng-template>
+
+  <ng-container *ngIf="!isLoading; else loader">
+    <div *ngIf="!images.length" class="image-resource-view__info">не найдено генераций</div>
+
+    <div *ngIf="images.length" class="image-resource-view__cards">
+      <div *ngFor="let item of images" class="image-resource-view__card">
+        <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение">
+        <div class="image-resource-view__card-text">
+          <p>Дата:  {{ item.date | date }}</p>
+        </div>
+        <a class="image-resource-view__card-download-button" (click)="downloadImage(item.originalLink)">Скачать</a>
+      </div>
+    </div>
+  </ng-container>
+</ui-page>

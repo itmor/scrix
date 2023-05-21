@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
 import { LayoutModule } from './modules/layout/layout.module';
+import { ManagerModule } from './modules/manager/manager.module';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +18,9 @@ import { LayoutModule } from './modules/layout/layout.module';
     LayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ManagerModule,
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
