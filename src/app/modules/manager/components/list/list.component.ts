@@ -9,7 +9,6 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 
 import { ImageResourceModel } from '../../models/generator-image.model';
 
-
 @Component({
   selector: 'manager-list',
   templateUrl: './list.component.html',
