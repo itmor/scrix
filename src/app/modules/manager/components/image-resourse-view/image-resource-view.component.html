@@ -8,7 +8,8 @@
 
     <div *ngIf="images.length" class="image-resource-view__cards">
       <div *ngFor="let item of images" class="image-resource-view__card">
-        <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение">
+        <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение"
+             (click)="openDialog(item.originalLink)">
         <div class="image-resource-view__card-text">
           <p>Дата:  {{ item.date | date }}</p>
         </div>

@@ -8,7 +8,11 @@
 
     <div *ngIf="imageResources.length" class="list__cards">
       <div *ngFor="let item of imageResources" class="list__card">
-        <img class="list__card-image" [src]="item.originalLink" alt="Изображение">
+        <div class="list__card-delete" (click)="removeResource(item.id)">
+          <mat-icon>clear</mat-icon>
+        </div>
+        <img class="list__card-image" [src]="item.originalLink" alt="Изображение"
+             (click)="openDialog(item.originalLink)">
         <div class="list__card-text">
           <p>Дата:  {{ item.date | date }}</p>
           <div class="list__card-progress"
@@ -20,7 +24,6 @@
            [routerLink]="'/manager/resource/' + item.id">Посмотреть генерации</a>
       </div>
     </div>
-
   </ng-container>
 </ui-page>
 

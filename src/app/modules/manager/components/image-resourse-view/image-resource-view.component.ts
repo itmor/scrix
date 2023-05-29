@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { tap } from 'rxjs';
 import { saveAs } from 'file-saver';
 
-import { ImageModel } from '../../models/generator-image.model';
 import { HttpService } from '../../../shared/services/http.service';
-import { tap } from 'rxjs';
+
+import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
+
+import { ImageModel } from '../../models/generator-image.model';
 
 @Component({
   selector: 'manager-image-resource-view',
@@ -16,7 +20,7 @@ export class ImageResourceViewComponent implements OnInit {
 
   isLoading: boolean;
 
-  constructor(private route: ActivatedRoute, private httpService: HttpService) {}
+  constructor(private route: ActivatedRoute, private dialog: MatDialog, private httpService: HttpService) {}
 
   ngOnInit(): void {
     const imageResourceId = +this.route.snapshot.params['id'];
@@ -31,6 +35,14 @@ export class ImageResourceViewComponent implements OnInit {
   downloadImage(url: string) {
     this.httpService.get<Blob>(url, { responseType: 'blob' }).subscribe((response) => {
       saveAs(response, 'image.jpg');
+    });
+  }
+
+  openDialog(imageUrl: string): void {
+    this.dialog.open(ImageDialogComponent, {
+      data: {
+        imageUrl,
+      },
     });
   }
 }

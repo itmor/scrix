@@ -11,7 +11,7 @@
     gap: 20px;
 
     @media @tablet {
-    grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @media @mobile {
@@ -26,8 +26,10 @@
     justify-content: center;
     border: 1px solid #ccc;
     padding: 10px;
+    position: relative;
 
     .list__card-image {
+      cursor: pointer;
       width: 100%;
       max-height: 300px;
       object-fit: cover;
@@ -54,6 +56,17 @@
       margin-top: 10px;
       background-color: #1f55dc;
       padding: 5px 13px;
+    }
+
+    .list__card-delete {
+      display: flex;
+      justify-content: end;
+      top: 8px;
+      right: 10px;
+      position: absolute;
+      border: 1px solid #cccccc;
+      background-color: #1e1e1e94;
+      cursor: pointer;
     }
   }
 }

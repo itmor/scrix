@@ -14,9 +14,12 @@ import { ImageResourceViewComponent } from './components/image-resourse-view/ima
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [ManagerComponent, GeneratorComponent, ListComponent, ImageResourceViewComponent],
+  declarations: [ManagerComponent, GeneratorComponent, ListComponent, ImageResourceViewComponent, ImageDialogComponent],
   imports: [
     CommonModule, //
     UiPageModule,
@@ -27,6 +30,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatDialogModule,
   ],
 })
 export class ManagerModule {}
