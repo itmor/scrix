@@ -37,9 +37,10 @@ export class ListComponent implements OnInit {
     if (!confirm('Действидельно удалить?')) {
       return;
     }
+    this.isLoading = true;
     this.httpService
       .post('/generator/remove_resource', { imageResourceId })
-      .pipe(tap(() => (this.isLoading = true)))
+      .pipe(tap(() => (this.isLoading = false)))
       .subscribe(() => this.load());
   }
 
