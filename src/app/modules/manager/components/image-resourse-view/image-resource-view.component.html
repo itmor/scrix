@@ -6,15 +6,61 @@
   <ng-container *ngIf="!isLoading; else loader">
     <div *ngIf="!images.length" class="image-resource-view__info">не найдено генераций</div>
 
-    <div *ngIf="images.length" class="image-resource-view__cards">
-      <div *ngFor="let item of images" class="image-resource-view__card">
-        <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение"
-             (click)="openDialog(item.originalLink)">
-        <div class="image-resource-view__card-text">
-          <p>Дата:  {{ item.date | date }}</p>
+    <ng-container *ngIf="images.length">
+      <div [ngClass]="{'image-resource-view__samples-panel--loading': isDownloading}"
+           class="image-resource-view__samples-panel">
+        <div class="image-resource-view__samples-panel-label">Вы можете скачать текущую выборку в архиве, выбрано
+          изображений {{ sampleCount }} из {{ imagesCount }}
+          <span *ngIf="lastOpenedImageUrl">, <a class="image-resource-view__samples-panel--last-image-link"
+                                                (click)="openDialog(lastOpenedImageUrl,true)">последняя открытая картинка</a></span>
         </div>
-        <a class="image-resource-view__card-download-button" (click)="downloadImage(item.originalLink)">Скачать</a>
+        <div class="image-resource-view__samples-panel-actions">
+          <div class="image-resource-view__samples-panel-button image-resource-view__samples-panel-button--show-images"
+               (click)="toggleSamplesContent()">
+            <span *ngIf="!isSamplesContentShown">Показать выборку</span>
+            <span *ngIf="isSamplesContentShown">Скрыть выборку</span>
+          </div>
+          <div class="image-resource-view__samples-panel-button" (click)="downloadZip()">Скачать</div>
+        </div>
       </div>
-    </div>
+
+      <div class="image-resource-view__samples-content" *ngIf="isSamplesContentShown" [@slideInOut]="">
+        <div class="image-resource-view__cards">
+          <ng-container *ngIf="!sampleData.length">Выборка отсутствует</ng-container>
+          <ng-container *ngIf="sampleData.length">
+            <div *ngFor="let item of sampleData" class="image-resource-view__card">
+              <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение"
+                   (click)="openDialog(item.originalLink)">
+              <div class="image-resource-view__card-actions">
+                <a
+                  class="image-resource-view__card-button image-resource-view__card-button--remove"
+                  (click)="removeImage(item.originalLink)">Убрать</a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="image-resource-view__cards">
+        <div *ngFor="let item of images" class="image-resource-view__card">
+          <img class="image-resource-view__card-image" [src]="item.originalLink" alt="Изображение"
+               (click)="openDialog(item.originalLink, true)">
+          <div class="image-resource-view__card-text">
+            <p>Дата:  {{ item.date | date }}</p>
+          </div>
+          <div class="image-resource-view__card-actions">
+            <a class="image-resource-view__card-button" (click)="downloadImage(item.originalLink)">Скачать</a>
+            <a *ngIf="isInSample(item.originalLink)"
+               class="image-resource-view__card-button image-resource-view__card-button--remove"
+               (click)="removeImage(item.originalLink)">Убрать</a>
+            <a *ngIf="!isInSample(item.originalLink)" class="image-resource-view__card-button"
+               (click)="addImage(item.originalLink)">
+              Добавить
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
   </ng-container>
 </ui-page>

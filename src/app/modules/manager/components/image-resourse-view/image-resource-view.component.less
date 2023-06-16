@@ -1,4 +1,5 @@
 @import "screen-sizes";
+@import "colors";
 
 .image-resource-view {
   .image-resource-view__info {
@@ -39,13 +40,87 @@
       text-align: center;
     }
 
+    .image-resource-view__card-actions {
+      display: flex;
+      align-items: baseline;
 
-    .image-resource-view__card-download-button {
-      cursor: pointer;
-      margin-bottom: 20px;
-      margin-top: 10px;
-      background-color: #1f55dc;
-      padding: 5px 13px;
+      .image-resource-view__card-button {
+        cursor: pointer;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        background-color: @buttonFirst;
+        padding: 5px 13px;
+
+        &.image-resource-view__card-button--remove {
+          background-color: #ad2323;
+        }
+      }
+
+      .image-resource-view__card-button + .image-resource-view__card-button {
+        margin-left: 10px;
+      }
     }
+  }
+
+  .image-resource-view__samples-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    background-color: #262525;
+    padding: 18px 26px;
+    border: 2px solid transparent;
+
+    @keyframes blink {
+      0% {
+        border-color: #adaaaa;
+      }
+      50% {
+        border-color: transparent;
+      }
+      100% {
+        border-color: #adaaaa;
+      }
+    }
+
+
+    &.image-resource-view__samples-panel--loading {
+      animation: blink 2s linear infinite;
+    }
+
+    .image-resource-view__samples-panel--last-image-link {
+      cursor: pointer;
+    }
+
+    .image-resource-view__samples-panel-label {
+      color: #b3b2b2;
+    }
+
+    .image-resource-view__samples-panel-actions {
+      display: flex;
+
+      .image-resource-view__samples-panel-button + .image-resource-view__samples-panel-button {
+        margin-left: 10px;
+      }
+    }
+
+    .image-resource-view__samples-panel-button {
+      cursor: pointer;
+      background-color: @buttonFirst;
+      padding: 8px 15px;
+      border-radius: 5px;
+
+      &.image-resource-view__samples-panel-button--show-images {
+        background-color: transparent;
+        border: 1px solid #a9b1c7;
+      }
+    }
+  }
+
+  .image-resource-view__samples-content {
+    border: 1px dashed #616262;
+    background-color: #262525;
+    margin-bottom: 40px;
+    padding: 25px;
   }
 }

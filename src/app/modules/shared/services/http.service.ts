@@ -26,6 +26,10 @@ export class HttpService {
     return this.request<T>(this.http.get<T>(this.transformUrl(url), options));
   }
 
+  getBlob(url: string, options = {}): Observable<Blob> {
+    return this.request<Blob>(this.http.get(this.transformUrl(url), { responseType: 'blob', ...options }));
+  }
+
   post<T = any>(url: string, body = {}, options = {}): Observable<T> {
     return this.request<T>(this.http.post<T>(this.transformUrl(url), body, options));
   }
