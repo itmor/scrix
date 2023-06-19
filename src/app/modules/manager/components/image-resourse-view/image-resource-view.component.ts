@@ -66,7 +66,6 @@ export class ImageResourceViewComponent implements OnInit {
       .pipe(tap(() => (this.isLoading = false)))
       .subscribe((data: ImageModel[]) => {
         this.images = data;
-        this.currentIndex = 0;
       });
   }
 
@@ -175,7 +174,7 @@ export class ImageResourceViewComponent implements OnInit {
     } else {
       this.isResourceImageOpened = false;
     }
-
+    this.currentIndex = this.images.findIndex((item) => item.originalLink === this.lastOpenedImageUrl);
     this.dialog.closeAll();
     this.dialog.open(ImageDialogComponent, {
       data: isResource
